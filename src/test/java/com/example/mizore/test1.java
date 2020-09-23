@@ -13,7 +13,7 @@ public class test1 {
         try {
             sqlSession = DBUtils.openSqlSession();
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            User user = userMapper.getUser("张三");
+            User user = userMapper.getUser("xiaoran");
             System.out.println(user);
             sqlSession.commit();
         } catch (Exception e) {
@@ -24,6 +24,5 @@ public class test1 {
                 sqlSession.close();
             }
         }
-
     }
 }

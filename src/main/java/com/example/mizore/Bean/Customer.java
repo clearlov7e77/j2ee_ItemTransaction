@@ -1,4 +1,5 @@
 package com.example.mizore.Bean;
 
-public class Customer {
+public class Customer extends User{
+
 }

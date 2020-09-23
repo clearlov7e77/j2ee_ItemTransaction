@@ -1,38 +1,62 @@
 package com.example.mizore.Bean;
 
 
+import java.util.Vector;
+
 public class User {
-    private String username;
+    private int id;
+    private String name;
     private String password;
-    private String address;
+    private int money;
+    private Vector<Good> mygoods;
+    private Vector<Order> myorders;
 
     @Override
     public String toString() {
-        return "User{" +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", address='" + address + '\'' +
+        return "User{id:"+id+
+                ",name:" + name + '\'' +
+                ", password:" + password + '\'' +
+                ", money:" +money + '\'' +
                 '}';
     }
 
     public User() {
     }
 
-    public User(Long id, String username, String password, String address) {
-        this.username = username;
+    public User(String username, String password, int money) {
+        this.name = username;
         this.password = password;
-        this.address = address;
+        this.money=money;
+    }
+    public User(int id,String username,String password,int money){
+        this.id=id;
+        this.name=username;
+        this.password=password;
+        this.money=money;
+    }
+    public int getId() {
+        return id;
     }
 
-
-    public String getUsername() {
-        return username;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public int getMoney() {
+        return money;
     }
 
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public String getPassword() {
         return password;
     }
@@ -41,11 +65,19 @@ public class User {
         this.password = password;
     }
 
-    public String getAddress() {
-        return address;
+    public Vector<Good> getMygoods() {
+        return mygoods;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setMygoods(Vector<Good> mygoods) {
+        this.mygoods = mygoods;
+    }
+
+    public Vector<Order> getMyorders() {
+        return myorders;
+    }
+
+    public void setMyorders(Vector<Order> myorders) {
+        this.myorders = myorders;
     }
 }

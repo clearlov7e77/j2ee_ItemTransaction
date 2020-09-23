@@ -6,6 +6,11 @@
     <properties resource="db.properties"/>
     <typeAliases>
         <typeAlias type="com.example.mizore.Bean.User" alias="user"/>
+        <typeAlias type="com.example.mizore.Bean.Admin" alias="Admin"/>
+        <typeAlias type="com.example.mizore.Bean.Customer" alias="Customer"/>
+        <typeAlias type="com.example.mizore.Bean.Good" alias="Good"/>
+        <typeAlias type="com.example.mizore.Bean.Order" alias="Order"/>
+        <typeAlias type="com.example.mizore.Bean.Seller" alias="Seller"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -20,5 +25,8 @@
     </environments>
     <mappers>
         <mapper resource="userMapper.xml"/>
+        <mapper resource="adminMapper.xml"/>
+        <mapper resource="goodMapper.xml"/>
+        <mapper resource="orderMapper.xml"/>
     </mappers>
 </configuration>
