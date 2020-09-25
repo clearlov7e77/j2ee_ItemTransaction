@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Bootstrap 模板</title>
+      
+      <style type=text/css>
+footer {
+	margin-top: 1em;
+	padding: 5px;
+	bottom: 2px;
+	clear: both;
+	display: block;
+	width: 100%;
+	border-top: 1px dashed #ccc;
+	text-align: center
+}
+
+footer small {
+	color: #aaa;
+	font-size: 12px
+}
+</style>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
+      <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">     
+   </head>
+   <body>
+      
+      	<!--头部-->
+   	<nav class="navbar navbar-default">
+		<div class="container">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed"
+			data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+			aria-expanded="false">
+			<span class="sr-only">Toggle navigation</span> 
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span> 
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#"
+			style="font-size: 24px">兰杉物品交易平台</a>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+		</ul>
+		<form action="#"
+			class="navbar-form navbar-left" role="search">
+			<div class="form-group">
+				<input type="text" name="key" class="form-control" placeholder="关键字">
+			</div>
+			<button type="submit" class="btn btn-default">查找物品</button>
+		</form>
+
+		<!--<% UserHandle userHandle=new UserHandle();
+		   Boolean isLogined=LoginVerify.isLogin(request);
+			User user=null;
+			String email="";
+			
+				//email 是邮箱或用户名（如果存在）
+		   if(isLogined){
+			   user=(User)session.getAttribute("loginUser");
+			   //更新信息，seesion中的user信息可能滞后！
+			   user=userHandle.findById(user.getId());
+			   email=(user.getName()==null || user.getName().length()==0)?user.getEmail():user.getName();
+		   }
+                %>-->
+		<ul class="nav navbar-nav navbar-right">
+			
+			
+			<li><a href="login.html">登录</a></li>
+			<li><a href="register.html">注册</a></li>
+			
+		</ul>
+	</div>
+	<!-- /.navbar-collapse -->
+</div></nav>
+      
+      
+      
+      <!--主体部分-->
+     	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<!--<%
+		out.println("<span style=\"text-align:center;font-size:16px;\" class=\"center-block\">物品详情</span>");
+	
+	%>-->
+
+					</div>
+
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-5">
+								<!--图片-->
+								<img title="右键查看原图" class="info-img" src="<%=good.getImage()%>">
+							</div>
+							<div class="col-md-7 info-goods">
+								<p>
+								<h3 class="info-goods-name"></h3>
+								<p>
+								<!--${good.getName()}-->
+								</p>
+								<p>
+									<br />类型：<a target="_blank"
+										href="<%=basePath %>index.jsp?ceta=${good.getType_id()}"><!--<%=typeName %>--></a><br />
+									<br />
+								</p>
+								<p>
+									            价格：<!--${good.price}--><br />
+									<br />
+								</p>
+								
+								
+								<p>
+									发布者：
+									<a target="_blank"
+										href="user/personal.jsp?tab=info&userid=<%=Procuteuser.getId()%>"><!--${Procuteuser.getName()}--></a>
+										(联系:<a href="mailto:<%=Procuteuser.getEmail()%>"><!--${Procuteuser.getEmail()}-->
+									</a>
+									或
+									<a target="_blank" href="user/personal.jsp?tab=mess&handle=write&toemail=<%=Procuteuser.getEmail() %>%20==>%20<%=Procuteuser.getName()%>">访问主页</a>)
+									<br /> <br />
+								</p>
+								<p>
+									发布时间：<!--<%=dateStr %>-->
+									<br /> <br />
+								</p>
+								<p class="info-goods-content">
+									物品说明：<!--<%=good.getContent().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br />") %>-->
+								</p>
+							</div>
+						</div>
+						<!-- 确认购买区域 -->
+						<script type="text/javascript">
+							
+//						$(document).ready(function(){
+//						  $("#buy").click(function(){
+//						  $(".buy-confirm").show(200);
+//						  });
+//						});
+						</script>
+						
+						<div style="display:none;" class="buy-confirm">
+						<hr />
+						<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<div class="panel panel-info">
+								<div class="panel-heading">
+								<span class="center-block" style="text-align:center;font-size:15px;">确定购买</span>
+								</div>
+								<div class="panel-body">
+								<p>
+								请输入给卖家的附加消息，然后点击 "确定" 按钮，我们将会通知卖家。
+								</p>
+								<!--<%
+									User guser = (User)session.getAttribute("loginUser");
+									int guserid = 0;
+									if(guser != null)
+										guserid = guser.getId();
+								%>-->
+								<form action="OrderCheckServlet?goodsid=<%=request.getParameter("goodsid")%>&userid=<%=guserid%>" method="post">
+								  <div class="form-group">
+								    <textarea class="form-control" name="message-to-seller" id="message-to-seller"></textarea>
+								  </div>
+								  <button type="submit" class="pull-left btn btn-default">确认购买</button>
+								</form>
+								
+								</div>
+							</div>
+						</div>
+						</div>
+						</div>
+						<!-- end of 确认购买区域 -->
+						
+						<!-- 提示消息 -->
+						<!--<%
+						if(request.getParameter("info")!=null){
+						%>-->
+						<div class="alert alert-warning"><!--<%=request.getParameter("info") %>--></div>
+						<!--<%}%>-->
+						
+						<hr />
+						<div class="row">
+							<div class="col-md-4">
+								<!--<button id="collectButton" onclick="collect(<%=good.getId()%>)" type="button" class="center-block btn btn-default">收藏此物品</button>-->
+							</div>
+							<div class="col-md-4">
+								<button type="button" id="addCastButton"
+									class="center-block btn btn-default"
+									onclick="shoppingCart(<%=isLogin %>,<%=goodsNum %>,<%=good.getId()%>)">加入购物车</button>
+							</div>
+							<div class="col-md-4">
+								
+								<!--这个按钮是查看物品状态显示出物品是否可以立即购买-->
+								<!--<button <%=good.getStates()==2?"":"disabled=\"disabled\"" %> id="buy" type="button" class="center-block btn btn-default" onclick="toLogin(<%=isLogin %>)">
+								<%
+								if(good.getStates()!=2){
+								    out.print("[不可用]已被购买或未通过审核");
+								}else{
+								    out.print("立即购买");
+								}
+								%>
+								</button>-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
+<!--<%
+userHandle.close();
+goodsHandle.close();
+%>-->
+
+<!--尾部-->
+      <footer>
+<p>
+	<small> LS物品交易-发布平台，Powered By
+		<a href="#"
+		target="_blank">LSShop</a> | <a rel="license" href="license"
+		target="_blank" title="用户协议">©</a> 2020-2020 </small>
+</p>
+</footer>
+      
+      <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+      <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   </body>
+</html>

@@ -20,6 +20,18 @@ public class Order {
         this.seller = seller;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", count=" + count +
+                ", address='" + address + '\'' +
+                ", customer='" + customer + '\'' +
+                ", seller='" + seller + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

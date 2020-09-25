@@ -11,6 +11,18 @@ public class Good {
   //  public String toString(){
   //  }
 
+
+    @Override
+    public String toString() {
+        return "Good{" +
+                "name='" + name + '\'' +
+                ", count=" + count +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
     public Good() {
     }
 

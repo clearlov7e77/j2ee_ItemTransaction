@@ -1,4 +1,7 @@
 package com.example.mizore.Service;
 
-public class AdminService {
+import com.example.mizore.Bean.Admin;
+
+public interface AdminService {
+    boolean adminlogin(Admin admin);
 }

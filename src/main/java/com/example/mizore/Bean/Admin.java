@@ -14,6 +14,11 @@ public class Admin {
         this.password = password;
     }
 
+    public Admin(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }
@@ -36,5 +41,14 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

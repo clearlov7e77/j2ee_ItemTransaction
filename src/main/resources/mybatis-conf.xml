@@ -24,9 +24,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="userMapper.xml"/>
-        <mapper resource="adminMapper.xml"/>
-        <mapper resource="goodMapper.xml"/>
-        <mapper resource="orderMapper.xml"/>
+        <mapper class="com.example.mizore.Dao.AdminMapper"/>
     </mappers>
 </configuration>
