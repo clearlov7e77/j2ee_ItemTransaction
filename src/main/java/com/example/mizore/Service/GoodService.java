@@ -12,4 +12,5 @@ public interface GoodService {
     int updateGood(String name,int price);
     List<Good> getgoodbytype(String type);
     List<Good> getallgood();
+    List<Good> getgoodbyname(String name);
 }

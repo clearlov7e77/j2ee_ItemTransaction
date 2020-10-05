@@ -36,4 +36,7 @@ public interface GoodMapper {
 
     @Select("select * from good")
     List<Good> getallGood();
+
+    @Select("select * from good where name=#{name}")
+    List<Good> getGoodbyName(String name);
 }

@@ -49,7 +49,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
             </ul>
-            <form action="#"
+            <form action="${pageContext.request.contextPath}/basic?ceta=7&pn=1"
                   class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                     <input type="text" name="key" class="form-control" placeholder="关键字">
@@ -81,12 +81,12 @@
 
             %>
             <ul class="nav navbar-nav navbar-right">
-
-
-
+            <%if(session.getAttribute("user")!=null){%>
+                <li><a href="${pageContext.request.contextPath}/personal">个人资料</a></li>
+               <%}else{%>
                 <li><a href="${pageContext.request.contextPath}/login">登录</a></li>
                 <li><a href="${pageContext.request.contextPath}/register">注册</a></li>
-
+           <%}%>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

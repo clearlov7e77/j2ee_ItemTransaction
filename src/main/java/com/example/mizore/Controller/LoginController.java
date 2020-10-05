@@ -32,6 +32,7 @@ public class LoginController {
     public String logincheck(Model model, HttpSession session, User user){
         //System.out.println(-1);
         if(userService.login(user)){
+            session.setAttribute("user",user);
             return "forward:/basic?ceta=0&pn=1";
         }
         else{

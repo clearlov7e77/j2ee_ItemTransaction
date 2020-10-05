@@ -31,35 +31,41 @@ public class GoodController {
 
     public String basic(int ceta, HttpServletRequest request, int pn, HttpSession session){
       //  System.out.println(ceta);
-        request.setAttribute("ceta",ceta);
-        if(ceta==0){
-            List<Good> list=goodService.getallgood();
-            int size1=list.size();
-            int perpage=7;
-            int maxpage=(size1+perpage-1)/perpage;
-            request.setAttribute("pn",pn);
-            request.setAttribute("maxpage",maxpage);
-            List<Good> list1=new ArrayList<>();
-            for(int i=(pn-1)*7;i<=(pn-1)*7+6;i++) {
-                if(i<size1)list1.add(list.get(i));
-            }
-            request.setAttribute("list",list1);
-            // request.setAttribute("list",list);
+        if(ceta==7){
+            String key=request.getParameter("key");
+            System.out.println(key);
+            
         }
         else {
-            String[] temp = {" ", "book", "live", "clothes", "electronic", "sport", "other"};
-            List<Good> list = goodService.getgoodbytype(temp[ceta]);
-            int size1=list.size();
-            int perpage=7;
-            int maxpage=(size1+perpage-1)/perpage;
-            request.setAttribute("pn",pn);
-            request.setAttribute("maxpage",maxpage);
-            List<Good> list1=new ArrayList<>();
-            for(int i=(pn-1)*7;i<=(pn-1)*7+6;i++) {
-                if(i<size1)list1.add(list.get(i));
+            request.setAttribute("ceta", ceta);
+            if (ceta == 0) {
+                List<Good> list = goodService.getallgood();
+                int size1 = list.size();
+                int perpage = 7;
+                int maxpage = (size1 + perpage - 1) / perpage;
+                request.setAttribute("pn", pn);
+                request.setAttribute("maxpage", maxpage);
+                List<Good> list1 = new ArrayList<>();
+                for (int i = (pn - 1) * 7; i <= (pn - 1) * 7 + 6; i++) {
+                    if (i < size1) list1.add(list.get(i));
+                }
+                request.setAttribute("list", list1);
+                // request.setAttribute("list",list);
+            } else {
+                String[] temp = {" ", "book", "live", "clothes", "electronic", "sport", "other"};
+                List<Good> list = goodService.getgoodbytype(temp[ceta]);
+                int size1 = list.size();
+                int perpage = 7;
+                int maxpage = (size1 + perpage - 1) / perpage;
+                request.setAttribute("pn", pn);
+                request.setAttribute("maxpage", maxpage);
+                List<Good> list1 = new ArrayList<>();
+                for (int i = (pn - 1) * 7; i <= (pn - 1) * 7 + 6; i++) {
+                    if (i < size1) list1.add(list.get(i));
+                }
+                request.setAttribute("list", list1);
+                //   request.setAttribute("list",list);
             }
-            request.setAttribute("list",list1);
-         //   request.setAttribute("list",list);
         }
         return "basic";
     }
@@ -70,6 +76,4 @@ public class GoodController {
 
         return "good";
     }
-   // @RequestMapping("/search")
-   // public String search()
 }
