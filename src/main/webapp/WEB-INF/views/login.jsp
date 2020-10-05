@@ -1,19 +1,20 @@
-<!--<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
              pageEncoding="UTF-8"%>
+<%--
 <%@ page language="java"%>
 <%@ page import="java.sql.*"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>-->
+%>--%>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <base href=" <%=basePath%>">
+    <%--<base href=" <%=basePath%>">--%>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/login.css" rel="stylesheet">
+    <link href="/login.css" rel="stylesheet">
     <title>登录界面</title>
     <style type=text/css>
         footer {
@@ -64,7 +65,7 @@
                 <button type="submit" class="btn btn-default">查找物品</button>
             </form>
 
-            <!--<% UserHandle userHandle=new UserHandle();
+            <%--<% UserHandle userHandle=new UserHandle();
 		   Boolean isLogined=LoginVerify.isLogin(request);
 			User user=null;
 			String email="";
@@ -76,7 +77,7 @@
 			   user=userHandle.findById(user.getId());
 			   email=(user.getName()==null || user.getName().length()==0)?user.getEmail():user.getName();
 		   }
-                %>-->
+                %>--%>
             <ul class="nav navbar-nav navbar-right">
 
                 <li><a href="${pageContext.request.contextPath}/register">注册</a></li>
@@ -88,11 +89,10 @@
 
 
 
-<!--<%if(request.getAttribute("isRegister")!=null){
+<%if(request.getAttribute("isRegister")!=null){
 out.print("<div class=\"alert alert-success\" role=\"alert\">注册成功，现在你可以登录</div>");
 }
 %>
-
 	<%if(request.getAttribute("isLoginOk")!=null && request.getAttribute("isLoginOk").equals("false")){
 out.print("<div class=\"alert alert-danger\" role=\"alert\">登录失败，请检查邮箱和密码</div>");
 }
@@ -102,14 +102,14 @@ out.print("<div class=\"alert alert-danger\" role=\"alert\">登录失败，请�
 		 String loginInfo=new String(request.getParameter("login-info").getBytes("UTF-8"),"UTF-8");
 out.print("<div class=\"alert alert-danger\" role=\"alert\">"+loginInfo+"</div>");
 }
-%>-->
+%>
 
 <div class="container">
-    <form class="form-signin" action="${pageContext.request.contextPath}/login" Method="Post">
+    <form class="form-signin" action="${pageContext.request.contextPath}/logincheck" Method="Post">
         <h2 class="form-signin-heading">登录网站</h2>
         <label for="name" class="sr-only">Email address</label>
         <input
-            type="email" id="name" class="form-control" name="name"
+            type="text" id="name" class="form-control" name="name"
             placeholder="用户名" required autofocus>
         <label
             for="password" class="sr-only">Password

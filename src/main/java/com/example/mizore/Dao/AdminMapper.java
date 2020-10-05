@@ -15,5 +15,5 @@ public interface AdminMapper {
     int insertAdmin(Admin admin);
    // int deleteAdmin(String name);
     @Update("update admin set password=#{password} where id=#{id}")
-    int updatePassword(int id,String password);
+    int updateAdminPassword(int id,String password);
 }

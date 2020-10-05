@@ -12,7 +12,9 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
     @Override
     public boolean adminlogin(Admin admin) {
-        if(admin.getPassword().equals(adminMapper.getAdmin(admin.getName()).getPassword()));
+        System.out.println(admin);
+        if(adminMapper.getAdmin(admin.getName())==null)return false;
+        if(admin.getPassword().equals(adminMapper.getAdmin(admin.getName()).getPassword()))return true;
         return false;
     }
 }

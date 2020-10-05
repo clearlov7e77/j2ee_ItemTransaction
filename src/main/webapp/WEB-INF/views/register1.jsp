@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
    <head>
@@ -55,11 +57,11 @@ footer small {
 			<button type="submit" class="btn btn-default">查找物品</button>
 		</form>
 
-		<!--<% UserHandle userHandle=new UserHandle();
+		<%--<% UserHandle userHandle=new UserHandle();
 		   Boolean isLogined=LoginVerify.isLogin(request);
 			User user=null;
 			String email="";
-			
+
 				//email 是邮箱或用户名（如果存在）
 		   if(isLogined){
 			   user=(User)session.getAttribute("loginUser");
@@ -67,7 +69,7 @@ footer small {
 			   user=userHandle.findById(user.getId());
 			   email=(user.getName()==null || user.getName().length()==0)?user.getEmail():user.getName();
 		   }
-                %>-->
+                %>--%>
 		<ul class="nav navbar-nav navbar-right">
 			
 
@@ -77,38 +79,40 @@ footer small {
 	</div>
 	<!-- /.navbar-collapse -->
 </div></nav>
-      
-      
+
+	<%if(request.getAttribute("error")!=null){
+		out.print("<div class=\"alert alert-danger\" role=\"alert\">注册失败，用户名已被占用</div>");
+	}%>
      <!--主体部分-->
       	<div class="container">
 		<div class="xt_mid">
 
 			<!--提交此form 注册 -->
-			<form action="#" method="post" class="form-horizontal">
+			<form action="${pageContext.request.contextPath}/registercheck" method="post" class="form-horizontal">
 				<h2 class="form-signin-heading">注册账号</h2>
 				<div class="form-group">
-					<label for="input_text" class="col-sm-2 control-label">用户名</label>
+					<label for="name1" class="col-sm-2 control-label">用户名</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="input_text"
-							name="input_email" placeholder="">
+						<input type="text" class="form-control" id="name1"
+							name="name" placeholder="用户名">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="input_password1" class="col-sm-2 control-label">密码</label>
+					<label for="password" class="col-sm-2 control-label">密码</label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="input_password1"
-							name="input_password1" placeholder="">
+						<input type="password" class="form-control" id="password"
+							name="password" placeholder="密码">
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="input_password2" class="col-sm-2 control-label">密码重复</label>
+			<%--	<div class="form-group">
+					<label for="password1" class="col-sm-2 control-label">密码重复</label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="input_password2"
-							name="input_password2" placeholder="">
+						<input type="password" class="form-control" id="password1"
+							name="password1" placeholder="">
 					</div>
 				</div>
-				
+				--%>
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label"></label>

@@ -8,9 +8,11 @@ import com.example.mizore.Dao.AdminMapper;
 import com.example.mizore.Dao.CustomerMapper;
 import com.example.mizore.Dao.SellerMapper;
 import com.example.mizore.Dao.UserMapper;
+import com.example.mizore.ServiceImpl.UserServiceImpl;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 import com.example.mizore.Bean.User;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class test1 {
     @Test

@@ -18,7 +18,7 @@ public interface OrderMapper {
     int updateAddress(int id,String address);
 
     @Update("update order set name=#{name} where id=#{id}")
-    int updateName(int id,String name);
+    int updateGoodName(int id,String name);
 
     @Update("update order set customer=#{name} where id=#{id}")
     int updateCustomer(int id,String name);

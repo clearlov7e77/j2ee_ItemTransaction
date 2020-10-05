@@ -6,6 +6,7 @@ public class Good {
     private String description;
     private String type;
     private int id;
+    private  int price;
 
  //   @Override
   //  public String toString(){
@@ -20,6 +21,7 @@ public class Good {
                 ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
                 ", id=" + id +
+                ", price=" + price +
                 '}';
     }
 
@@ -72,5 +74,13 @@ public class Good {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

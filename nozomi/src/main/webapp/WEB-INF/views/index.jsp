@@ -1,3 +1,4 @@
+<%@ page import="java.util.Vector" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -6,8 +7,8 @@
 </head>
 
 <body>
-Time: ${time}
+Time: ${user.getName()}
 <br>
-Message: ${message}
+Message: ${user.getPassword()}
 </body>
 </html>

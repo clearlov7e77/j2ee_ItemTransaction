@@ -1,0 +1,3 @@
+<html>
+admin success;
+</html>
