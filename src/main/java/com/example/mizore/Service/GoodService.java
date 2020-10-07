@@ -13,4 +13,5 @@ public interface GoodService {
     List<Good> getgoodbytype(String type);
     List<Good> getallgood();
     List<Good> getgoodbyname(String name);
+    List<Good> getgoodbyseller(String seller);
 }

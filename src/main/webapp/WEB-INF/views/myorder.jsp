@@ -1,3 +1,8 @@
+<%@ page import="com.example.mizore.Bean.Order" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,63 +13,26 @@
 
 </head>
 <body>
-<%--<%/*
-		购买历史页，被/personal.jsp包含，查找所有自己已购买商品
-		*/%>
-		<%@ page import="java.text.SimpleDateFormat,java.sql.*,src.tools.*,javax.servlet.http.HttpSession,java.util.*,src.vo.*"%>
-		<%@ page language="java" contentType="text/html; charset=UTF-8"
-			pageEncoding="UTF-8"%>
-		<%@ page import="src.dbHandle.*,src.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat"%>
-		<%
-		    String path = request.getContextPath();
-		    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-		%>
-		<%
-		//findGoodsByUser
-		OrderHandle orderHandle=new OrderHandle();
-		User me =(User)session.getAttribute("loginUser");
-		UserHandle userHandle=new UserHandle();
-		List <Goods> list=null;
-		list=orderHandle.findGoodsByUser(me);
-		%>--%>
 <div class="panel panel-info">
     <div class="panel-heading">
-        我的购买记录
+        我的订单
     </div>
     <div class="panel-body">
-        <%
-
-            for(int i=1;i<=)
-        %>
-        <%--<%
-			if(list.size()!=0){
-		    	for(Goods good:list){
-		    		if(good.getProducter_id()==null)continue;
-			    	User user = userHandle.findById(good.getProducter_id());
-			    	%>
-
+            <%
+				List<Order> list=new ArrayList<>();
+				if(request.getAttribute("list")!=null)list=(List<Order>)request.getAttribute("list");
+				if(list.size()!=0){
+		    	for(Order order:list){%>
 			    	<div class="list-group-item">
 		                        <div class="row">
-		                            <div class="goods-img col-md-2">
-		                                <img class="img-rounded img-item-goods"
-		                                    src="<%=good.getImage()%>" />
-		                            </div>
 		                                <div class="col-md-10">
 		                                <div class="row detail-goods lead">
-		                                    <a href="goods/info.jsp?goodsid=<%=good.getId()%>"><%=good.getName()%></a>
+											<span>商品名称：<%=order.getName()%></span>
 		                                </div>
-		                                <div class="row detail-goods">￥<span class="text-danger"><%=Math.round(good.getPrice()) %></span>
-		                                <span class="detail-goods text-muted">　发布者:<%if(user.getName()!=null){%><%=user.getName() %><%}else{%><%=user.getEmail()%><%}%> </span>
-		                                <span class="detail-goods text-muted">　时间：
-		                                <%
-		                                java.util.Date date=good.getCreatDate();
-		                                SimpleDateFormat myFmt=new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
-		                                String dateStr =myFmt.format(date);
-		                                out.print(dateStr);
-		                                %>
-		                                </span>
-
-		                                </div>
+		                                <div class="row detail-goods">地址:<span class="text-danger"><%=order.getAddress()%></span>
+		                                <span class="detail-goods text-muted">　卖家:<%=order.getSeller()%></span>
+											<span class="detail-goods text-muted">总金额：<%=order.getCount()%></span>
+										</div>
 
 		                            </div>
 		                        </div>
@@ -74,10 +42,5 @@
 			    	<%}%>
 			</div>
 		</div>
-		<%
-		userHandle.close();
-		orderHandle.close();
-		%>
-		--%>
 </body>
 </html>

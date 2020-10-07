@@ -64,26 +64,38 @@
                         <div class="list-group-item personal-main-info">
                             <div class="row detail-goods text-muted">姓名：<%=user.getName() %></div>
                         </div>
-                        <a href="${pageContext.request.contextPath}/?tab=info"
+                        <a href="${pageContext.request.contextPath}/personal?tab=info"
                            class="list-group-item <%=tab.equals("info")?"active":"" %>">
                             个人信息</a>
-                        <a href="user/personal.jsp?tab=history"
+                        <a href="${pageContext.request.contextPath}/personal?tab=myorder"
                            class="list-group-item <%=tab.equals("history")?"active":"" %>">
-                            购买历史</a>
-                        <a href="user/personal.jsp?tab=pushed"
+                            我的订单</a>
+                        <a href="${pageContext.request.contextPath}/personal?tab=pushed"
                            class="list-group-item <%=tab.equals("pushed")?"active":"" %>">
                             我发布的</a>
-                        <a href="user/personal.jsp?tab=push"
+                        <a href="${pageContext.request.contextPath}/personal?tab=push"
                            class="list-group-item <%=tab.equals("push")?"active":"" %>">
                             发布商品</a>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-8">
+            <%if(tab.equals("push")){%>
+            <%@ include file="push.jsp"%>
+            <%}%>
+            <%if(tab.equals("info")){%>
+            <%@ include file="info.jsp"%>
+            <%}%>
+            <%if(tab.equals("myorder")){%>
+            <%@ include file="myorder.jsp"%>
+            <%}%>
+            <%if(tab.equals("pushed")){%>
+            <%@ include file="pushed.jsp"%>
+            <%}%>
+        </div>
     </div>
-    <%//if(tab.equals("push")){%>
-    <%@ include file="push.jsp"%>
-    <%//}%>
+
 </div>
 
 

@@ -16,11 +16,10 @@
 <%if(request.getAttribute("error")!=null){
     out.print("<div class=\"alert alert-danger\" role=\"alert\">上架失败，该商品已存在</div>");
 }%>
-<div class="container">
     <div class="row clearfix">
-        <div class="col-md-2 column">
+        <div class="col-md-1 column">
         </div>
-        <div class="col-md-10 column">
+        <div class="col-md-11 column">
             <div class="panel-body">
 
                 <form action="${pageContext.request.contextPath}/newproduct" method="post"
@@ -61,8 +60,6 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 
 </body>

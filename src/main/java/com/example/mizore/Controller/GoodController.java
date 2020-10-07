@@ -25,7 +25,8 @@ public class GoodController {
         else{
             request.setAttribute("error",1);
         }
-        return "push";
+        request.setAttribute("tab","push");
+        return "personal";
     }
     @RequestMapping("/basic")
 

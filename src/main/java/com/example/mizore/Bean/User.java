@@ -10,6 +10,7 @@ public class User {
     private int money;
     private Vector<Good> mygoods;
     private Vector<Order> myorders;
+    private String address;
 
     @Override
     public String toString() {
@@ -79,5 +80,13 @@ public class User {
 
     public void setMyorders(Vector<Order> myorders) {
         this.myorders = myorders;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

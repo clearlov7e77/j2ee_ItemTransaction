@@ -20,13 +20,38 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public int insert(User user){
-        System.out.println(user);
+     //   System.out.println(user);
         if(userMapper.getUser(user.getName())!=null){
             return -1;
         }
         else{
             userMapper.insertUser(user);
-            return 1;
+            return userMapper.getUser(user.getName()).getId();
         }
+    }
+
+    @Override
+    public int updatemoney(int id, int money) {
+            userMapper.updateMoney(id,money);
+            return 1;
+    }
+
+    @Override
+    public int updatepassword(int id, String password) {
+        userMapper.updatePassword(id,password);
+        return 1;
+    }
+
+    @Override
+    public int updateaddress(int id, String address) {
+      //  System.out.println(address);
+      //  System.out.println(id);
+        userMapper.updateuseraddress(id,address);
+        return 1;
+    }
+
+    @Override
+    public User getuser(String name) {
+        return userMapper.getUser(name);
     }
 }

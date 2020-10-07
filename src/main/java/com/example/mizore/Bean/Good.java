@@ -7,6 +7,7 @@ public class Good {
     private String type;
     private int id;
     private  int price;
+    private String seller;
 
  //   @Override
   //  public String toString(){
@@ -82,5 +83,13 @@ public class Good {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getSeller() {
+        return seller;
+    }
+
+    public void setSeller(String seller) {
+        this.seller = seller;
     }
 }

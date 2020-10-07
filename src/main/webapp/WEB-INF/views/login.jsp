@@ -98,12 +98,6 @@ out.print("<div class=\"alert alert-danger\" role=\"alert\">登录失败，请�
 }
 %>
 
-	<%if(request.getParameter("login-info")!=null){
-		 String loginInfo=new String(request.getParameter("login-info").getBytes("UTF-8"),"UTF-8");
-out.print("<div class=\"alert alert-danger\" role=\"alert\">"+loginInfo+"</div>");
-}
-%>
-
 <div class="container">
     <form class="form-signin" action="${pageContext.request.contextPath}/logincheck" Method="Post">
         <h2 class="form-signin-heading">登录网站</h2>

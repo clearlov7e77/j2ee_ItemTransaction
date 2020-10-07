@@ -68,4 +68,9 @@ public class GoodServiceImpl implements GoodService {
     public List<Good> getgoodbyname(String name){
             return goodMapper.getGoodbyName(name);
     }
+
+    @Override
+    public List<Good> getgoodbyseller(String seller) {
+        return goodMapper.getGoodbySeller(seller);
+    }
 }

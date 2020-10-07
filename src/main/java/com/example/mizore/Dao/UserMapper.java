@@ -21,4 +21,7 @@ public interface UserMapper {
 
      @Update("update user set money=#{money} where id=#{id}")
      int updateMoney(int id,int money);
+
+     @Update("update user set address=#{address} where id=#{id}")
+     int updateuseraddress(int id,String address);
 }
