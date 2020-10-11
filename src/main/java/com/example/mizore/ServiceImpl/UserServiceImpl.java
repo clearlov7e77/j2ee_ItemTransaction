@@ -25,8 +25,9 @@ public class UserServiceImpl implements UserService {
             return -1;
         }
         else{
+            user.setMoney(1000);
             userMapper.insertUser(user);
-            return userMapper.getUser(user.getName()).getId();
+            return 1;
         }
     }
 
@@ -54,4 +55,5 @@ public class UserServiceImpl implements UserService {
     public User getuser(String name) {
         return userMapper.getUser(name);
     }
+    public User   getuserbyid(int id){ return  userMapper.getUserbyid(id);}
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface GoodMapper {
-    @Insert("insert into good(name,count,description,type,price) values(#{name},#{count},#{description},#{type},#{price})")
+    @Insert("insert into good(name,count,description,type,price,seller) values(#{name},#{count},#{description},#{type},#{price},#{seller})")
     int insertGood(Good good);
 
     @Delete("delete from good where id=#{id}")
@@ -37,9 +37,8 @@ public interface GoodMapper {
     @Select("select * from good")
     List<Good> getallGood();
 
-    @Select("select * from good where name=#{name}")
+    @Select("select * from good where name like '%${name}%'")
     List<Good> getGoodbyName(String name);
-
 
     @Select("select * from good where seller=#{seller}")
     List<Good> getGoodbySeller(String seller);

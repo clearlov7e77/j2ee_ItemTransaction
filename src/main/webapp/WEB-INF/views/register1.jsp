@@ -49,13 +49,6 @@ footer small {
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
 		</ul>
-		<form action="#"
-			class="navbar-form navbar-left" role="search">
-			<div class="form-group">
-				<input type="text" name="key" class="form-control" placeholder="关键字">
-			</div>
-			<button type="submit" class="btn btn-default">查找物品</button>
-		</form>
 
 		<%--<% UserHandle userHandle=new UserHandle();
 		   Boolean isLogined=LoginVerify.isLogin(request);
@@ -94,14 +87,14 @@ footer small {
 					<label for="name1" class="col-sm-2 control-label">用户名</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="name1"
-							name="name" placeholder="用户名">
+							name="name" placeholder="用户名" required maxlength="30">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="password" class="col-sm-2 control-label">密码</label>
 					<div class="col-sm-10">
 						<input type="password" class="form-control" id="password"
-							name="password" placeholder="密码">
+							name="password" placeholder="密码" required maxlength="30">
 					</div>
 				</div>
 

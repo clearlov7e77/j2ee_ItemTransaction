@@ -53,6 +53,23 @@ public class UserController {
                 List<Good> list= goodService.getgoodbyseller(user.getName());
                 request.setAttribute("list",list);
         }
+        else if(tab.equals("sellout")){
+            User user=(User) session.getAttribute("user");
+            List<Order> list=orderService.getorderi(user.getName());
+            request.setAttribute("list",list);
+        }
         return "personal";
+    }
+    @RequestMapping("/out")
+    public String out(HttpSession session,HttpServletRequest request){
+        session.setAttribute("user",null);
+        request.setAttribute("outsuccess",1);
+        return "login";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(int gooid,HttpServletRequest request,HttpSession session){
+        goodService.deleteGood(goodService.findGood(gooid).getName());
+        return "redirect:/personal?tab=pushed";
     }
 }

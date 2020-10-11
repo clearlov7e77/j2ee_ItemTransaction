@@ -9,4 +9,5 @@ public interface UserService {
     int    updatepassword(int id,String password);
     int    updateaddress(int id,String address);
     User   getuser(String name);
+    User   getuserbyid(int id);
 }

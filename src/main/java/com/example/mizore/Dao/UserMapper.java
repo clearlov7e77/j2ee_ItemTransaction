@@ -10,6 +10,9 @@ public interface UserMapper {
      @Select("select * from user where name=#{name}")
      User getUser(String name);
 
+     @Select("select * from user where id=#{id}")
+     User getUserbyid(int id);
+
      @Insert("insert into user(name,money,password) values(#{name},#{money},#{password})")
      int insertUser(User user);
 
@@ -24,4 +27,6 @@ public interface UserMapper {
 
      @Update("update user set address=#{address} where id=#{id}")
      int updateuseraddress(int id,String address);
+
+
 }

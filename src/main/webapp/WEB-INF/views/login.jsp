@@ -57,13 +57,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
             </ul>
-            <form action="#"
-                  class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" name="key" class="form-control" placeholder="关键字">
-                </div>
-                <button type="submit" class="btn btn-default">查找物品</button>
-            </form>
 
             <%--<% UserHandle userHandle=new UserHandle();
 		   Boolean isLogined=LoginVerify.isLogin(request);
@@ -93,7 +86,11 @@
 out.print("<div class=\"alert alert-success\" role=\"alert\">注册成功，现在你可以登录</div>");
 }
 %>
-	<%if(request.getAttribute("isLoginOk")!=null && request.getAttribute("isLoginOk").equals("false")){
+<%if(request.getAttribute("outsuccess")!=null){
+    out.print("<div class=\"alert alert-success\" role=\"alert\">退出成功</div>");
+}
+%>
+<%if(request.getAttribute("isLoginOk")!=null && request.getAttribute("isLoginOk").equals("false")){
 out.print("<div class=\"alert alert-danger\" role=\"alert\">登录失败，请检查邮箱和密码</div>");
 }
 %>

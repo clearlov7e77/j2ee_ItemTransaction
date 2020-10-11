@@ -50,7 +50,7 @@
             <ul class="nav navbar-nav">
             </ul>
             <form action="${pageContext.request.contextPath}/basic?ceta=7&pn=1"
-                  class="navbar-form navbar-left" role="search">
+                  class="navbar-form navbar-left" role="search" method="post">
                 <div class="form-group">
                     <input type="text" name="key" class="form-control" placeholder="关键字">
                 </div>
@@ -82,7 +82,7 @@
             %>
             <ul class="nav navbar-nav navbar-right">
             <%if(session.getAttribute("user")!=null){%>
-                <li><a href="${pageContext.request.contextPath}/personal">个人资料</a></li>
+                <li><a href="${pageContext.request.contextPath}/personal?tab=info">个人资料</a></li>
                <%}else{%>
                 <li><a href="${pageContext.request.contextPath}/login">登录</a></li>
                 <li><a href="${pageContext.request.contextPath}/register">注册</a></li>
@@ -92,6 +92,17 @@
         <!-- /.navbar-collapse -->
     </div></nav>
 
+<%
+   // System.out.println(request.getAttribute("info"));
+    if(request.getAttribute("info")!=null){
+    if(request.getAttribute("info").equals("success")){
+    out.print("<div class=\"alert alert-success\" role=\"alert\">购买成功</div>");
+    }
+    else{
+        out.print("<div class=\"alert alert-danger\" role=\"alert\">余额不足，购买失败！</div>");
+    }
+}
+%>
 
 <div class="container">
     <div class="row">

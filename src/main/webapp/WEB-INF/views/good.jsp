@@ -1,4 +1,5 @@
 <%@ page import="com.example.mizore.Bean.Good" %>
+<%@ page import="com.example.mizore.Bean.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -50,19 +51,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
             </ul>
-            <form action="#"
-                  class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" name="key" class="form-control" placeholder="关键字">
-                </div>
-                <button type="submit" class="btn btn-default">查找物品</button>
-            </form>
             <ul class="nav navbar-nav navbar-right">
-
-
+                <%if(session.getAttribute("user")!=null){%>
+                <li><a href="${pageContext.request.contextPath}/personal?tab=info">个人资料</a></li>
+                <%}else{%>
                 <li><a href="${pageContext.request.contextPath}/login">登录</a></li>
                 <li><a href="${pageContext.request.contextPath}/register">注册</a></li>
-
+                <%}%>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -90,7 +85,7 @@
                                 ${good.getName()}
                             </p>
                             <p>
-                                <br />类型：${good.getType()}-</a><br />
+                                <br />类型：${good.getType()}<br />
                                 <br />
                             </p>
                             <p>
@@ -103,97 +98,34 @@
                                 发布者：${good.getSeller()}<br><br>
                             </p>
                             <p class="info-goods-content">
-                                <% Good good=request.getAttribute("good")%>
+                                <% Good good=(Good) request.getAttribute("good");
+                                    User user=(User)session.getAttribute("user");
+                                %>
                                 物品说明：<%=good.getDescription().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br />") %>
                             </p>
                         </div>
                     </div>
-                    <!-- 确认购买区域 -->
-                    <script type="text/javascript">
-
-                        //						$(document).ready(function(){
-                        //						  $("#buy").click(function(){
-                        //						  $(".buy-confirm").show(200);
-                        //						  });
-                        //						});
-                    </script>
-
-                    <div style="display:none;" class="buy-confirm">
+                    <div class="buy-confirm">
                         <hr />
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        <span class="center-block" style="text-align:center;font-size:15px;">确定购买</span>
-                                    </div>
                                     <div class="panel-body">
-                                        <p>
-                                            请输入给卖家的附加消息，然后点击 "确定" 按钮，我们将会通知卖家。
-                                        </p>
-                                        <!--<%
-									User guser = (User)session.getAttribute("loginUser");
-									int guserid = 0;
-									if(guser != null)
-										guserid = guser.getId();
-								%>-->
-                                        <form action="OrderCheckServlet?goodsid=<%=request.getParameter("goodsid")%>&userid=<%=guserid%>" method="post">
-                                            <div class="form-group">
-                                                <textarea class="form-control" name="message-to-seller" id="message-to-seller"></textarea>
-                                            </div>
+                                        <form action="${pageContext.request.contextPath}/buy?goodid=<%=good.getId()%>&userid=<%=user.getId()%>" method="post">
                                             <button type="submit" class="pull-left btn btn-default">确认购买</button>
                                         </form>
-
                                     </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <!-- end of 确认购买区域 -->
-
-                    <!-- 提示消息 -->
-                    <!--<%
-						if(request.getParameter("info")!=null){
-						%>-->
-                    <div class="alert alert-warning"><!--<%=request.getParameter("info") %>--></div>
-                    <!--<%}%>-->
+                    <%if(request.getParameter("info")!=null){%>
+                    <div class="alert alert-warning"><%=request.getParameter("info") %></div>
+                    <%}%>
 
                     <hr />
-                    <div class="row">
-                        <div class="col-md-4">
-                            <!--<button id="collectButton" onclick="collect(<%=good.getId()%>)" type="button" class="center-block btn btn-default">收藏此物品</button>-->
-                        </div>
-                        <div class="col-md-4">
-                            <button type="button" id="addCastButton"
-                                    class="center-block btn btn-default"
-                                    onclick="shoppingCart(<%=isLogin %>,<%=goodsNum %>,<%=good.getId()%>)">加入购物车</button>
-                        </div>
-                        <div class="col-md-4">
-
-                            <!--这个按钮是查看物品状态显示出物品是否可以立即购买-->
-                            <!--<button <%=good.getStates()==2?"":"disabled=\"disabled\"" %> id="buy" type="button" class="center-block btn btn-default" onclick="toLogin(<%=isLogin %>)">
-								<%
-								if(good.getStates()!=2){
-								    out.print("[不可用]已被购买或未通过审核");
-								}else{
-								    out.print("立即购买");
-								}
-								%>
-								</button>-->
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 </body>
 </html>
-<!--<%
-    userHandle.close();
-    goodsHandle.close();
-%>-->
-
 <!--尾部-->
 <footer>
     <p>
@@ -208,4 +140,3 @@
 <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
---%>

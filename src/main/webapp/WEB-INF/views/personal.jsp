@@ -35,6 +35,9 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="${pageContext.request.contextPath}/basic?ceta=0&pn=1">主页面</a></li>
+               <%if(session.getAttribute("user")!=null){%>
+                <li><a href="${pageContext.request.contextPath}/out">退出登录</a></li>
+                <%}%>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -70,6 +73,9 @@
                         <a href="${pageContext.request.contextPath}/personal?tab=myorder"
                            class="list-group-item <%=tab.equals("history")?"active":"" %>">
                             我的订单</a>
+                        <a href="${pageContext.request.contextPath}/personal?tab=sellout"
+                           class="list-group-item <%=tab.equals("sellout")?"active":"" %>">
+                            我卖出的</a>
                         <a href="${pageContext.request.contextPath}/personal?tab=pushed"
                            class="list-group-item <%=tab.equals("pushed")?"active":"" %>">
                             我发布的</a>
@@ -92,6 +98,9 @@
             <%}%>
             <%if(tab.equals("pushed")){%>
             <%@ include file="pushed.jsp"%>
+            <%}%>
+            <%if(tab.equals("sellout")){%>
+            <%@ include file="mybuy.jsp"%>
             <%}%>
         </div>
     </div>

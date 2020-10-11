@@ -34,7 +34,9 @@
                         <span class="detail-goods text-muted">　分类:<%=good.getType()%></span>
                         <span class="detail-goods text-muted">简介：<%=good.getDescription()%></span>
                     </div>
-
+                    <form action="${pageContext.request.contextPath}/delete?gooid=<%=good.getId()%>" method="post">
+                        <button type="submit" class="btn btn-primary">删除</button>
+                    </form>
                 </div>
             </div>
         </div>

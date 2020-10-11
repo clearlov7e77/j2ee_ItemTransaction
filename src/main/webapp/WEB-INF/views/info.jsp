@@ -24,13 +24,19 @@
                 <input readonly type="text" class="form-control" value="<%=user.getPassword()%>">
             </div>
         </div>
-
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon" id="money1">余额</span>
+                <input readonly type="text" class="form-control" value="<%=user.getMoney()%>">
+            </div>
+        </div>
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon" id="address1">地址</span>
-                <input type="text" class="form-control" name="address" value="<%=user.getAddress()%>">
+                <input type="text" class="form-control" name="address" value="<%=user.getAddress()%>" maxlength="40">
             </div>
         </div>
+
         <button type="submit" class="btn btn-primary">更新我的资料</button>
     </form>
 </div>

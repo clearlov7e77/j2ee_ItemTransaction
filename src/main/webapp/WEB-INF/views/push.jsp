@@ -11,7 +11,7 @@
 </head>
 <body>
 <%if(request.getAttribute("success")!=null){
-    out.print("<div class=\"alert alert-success\" role=\"alert\">成功提交上架申请</div>");
+    out.print("<div class=\"alert alert-success\" role=\"alert\">成功上架</div>");
 }%>
 <%if(request.getAttribute("error")!=null){
     out.print("<div class=\"alert alert-danger\" role=\"alert\">上架失败，该商品已存在</div>");
@@ -28,15 +28,15 @@
 
                     <div class="form-group">
                         <p>物品名称：</p>
-                        <input class="form-control" name="name">
+                        <input class="form-control" name="name" required maxlength="30">
                     </div>
                     <div class="form-group">
                         <p>价格(元)：</p>
-                        <input type="number" class="form-control" name="price">
+                        <input type="number" class="form-control" name="price" required>
                     </div>
                     <div class="form-group">
                         <p>物品简介：</p>
-                        <textarea rows="3" class="form-control" name="description"></textarea>
+                        <textarea rows="3" class="form-control" name="description" maxlength="1000"></textarea>
                     </div>
                     <div class="form-group">
                         <p>选择一个分类：</p>
@@ -44,7 +44,7 @@
                             <option value="book">书籍</option>
                             <option value="live">生活出行</option>
                             <option value="clothes">衣服鞋包</option>
-                            <option value="eletronic">电子产品</option>
+                            <option value="electronic">电子产品</option>
                             <option value="sport">体育运动</option>
                             <option value="other">其他</option>
                         </select>

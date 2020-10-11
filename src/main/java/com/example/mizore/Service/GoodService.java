@@ -14,4 +14,5 @@ public interface GoodService {
     List<Good> getallgood();
     List<Good> getgoodbyname(String name);
     List<Good> getgoodbyseller(String seller);
+    int updatecount(int id);
 }

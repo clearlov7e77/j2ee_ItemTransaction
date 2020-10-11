@@ -32,5 +32,5 @@ public interface OrderMapper {
     List<Order> getOrderByCustomer(String name);
 
     @Select("select * from test.order where seller=#{name}")
-    Order getOrderBySeller(String name);
+    List<Order> getOrderBySeller(String name);
 }

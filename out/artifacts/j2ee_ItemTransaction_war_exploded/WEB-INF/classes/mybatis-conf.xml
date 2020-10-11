@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <typeAliases>
+        <typeAlias type="com.example.mizore.Bean.User" alias="user"/>
+        <typeAlias type="com.example.mizore.Bean.Admin" alias="Admin"/>
+        <typeAlias type="com.example.mizore.Bean.Customer" alias="Customer"/>
+        <typeAlias type="com.example.mizore.Bean.Good" alias="Good"/>
+        <typeAlias type="com.example.mizore.Bean.Order" alias="Order"/>
+        <typeAlias type="com.example.mizore.Bean.Seller" alias="Seller"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper class="com.example.mizore.Dao.AdminMapper"/>
+    </mappers>
+</configuration>

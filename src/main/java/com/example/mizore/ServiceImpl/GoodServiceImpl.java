@@ -17,6 +17,7 @@ public class GoodServiceImpl implements GoodService {
     @Override
     public int insertGood(Good good) {
         if(goodMapper.getGood(good.getName())==null){
+            good.setCount(1);
             goodMapper.insertGood(good);
             return 1;
         }
@@ -72,5 +73,14 @@ public class GoodServiceImpl implements GoodService {
     @Override
     public List<Good> getgoodbyseller(String seller) {
         return goodMapper.getGoodbySeller(seller);
+    }
+
+    @Override
+    public int updatecount(int id) {
+        int cnt=goodMapper.getGoodbyid(id).getCount();
+        cnt--;
+        goodMapper.updateCount(id,cnt);
+        if(cnt==0)deleteGood(goodMapper.getGoodbyid(id).getName());
+        return 0;
     }
 }
