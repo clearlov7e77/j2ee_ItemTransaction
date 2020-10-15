@@ -96,10 +96,13 @@
    // System.out.println(request.getAttribute("info"));
     if(request.getAttribute("info")!=null){
     if(request.getAttribute("info").equals("success")){
-    out.print("<div class=\"alert alert-success\" role=\"alert\">购买成功</div>");
+        out.print("<div class=\"alert alert-success\" role=\"alert\">购买成功</div>");
+    }
+    else if(request.getAttribute("info").equals("failed")){
+        out.print("<div class=\"alert alert-danger\" role=\"alert\">余额不足，购买失败！</div>");
     }
     else{
-        out.print("<div class=\"alert alert-danger\" role=\"alert\">余额不足，购买失败！</div>");
+        out.print("<div class=\"alert alert-danger\" role=\"alert\">不能购买自己的东西</div>");
     }
 }
 %>

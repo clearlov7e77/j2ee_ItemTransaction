@@ -109,7 +109,10 @@ public class GoodController {
         int price=goodService.findGood(goodid).getPrice();
         int money=userService.getuserbyid(userid).getMoney();
         String info;
-        if(money<price){
+        if(user.getName().equals(good.getSeller())){
+            info="self";
+        }
+        else if(money<price){
             info="failed";
         }
         else {

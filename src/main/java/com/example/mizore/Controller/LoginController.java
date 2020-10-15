@@ -29,18 +29,16 @@ public class LoginController {
         return "login";
     }
     @RequestMapping("/logincheck")
-    public String logincheck(Model model, HttpSession session, User user){
+    public String logincheck(Model model, HttpSession session, User user,HttpServletRequest request){
         //System.out.println(-1);
         if(userService.login(user)){
             user=userService.getuser(user.getName());
             session.setAttribute("user",user);
             return "forward:/basic?ceta=0&pn=1";
         }
-        else{
-            Admin admin=new Admin(user.getName(),user.getPassword());
-            System.out.println(adminService.adminlogin(admin));
-            if(adminService.adminlogin(admin))return "admin";
-            else return "failed";
+            else {
+                request.setAttribute("failed",1);
+                return "login";
         }
     }
     @RequestMapping("/register")

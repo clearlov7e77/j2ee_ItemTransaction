@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <p>价格(元)：</p>
-                        <input type="number" class="form-control" name="price" required>
+                        <input type="number" class="form-control" name="price" min=0 required >
                     </div>
                     <div class="form-group">
                         <p>物品简介：</p>
